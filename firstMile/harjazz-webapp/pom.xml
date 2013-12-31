@@ -1,0 +1,55 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.harjazz.webapp</groupId>
+  <artifactId>harjazz-webapp</artifactId>
+  <packaging>war</packaging>
+  <version>1.0</version>
+  <name>harjazz-webapp Maven Webapp</name>
+  <url>http://maven.apache.org</url>
+  <parent>
+	<groupId>com.harjazz</groupId>
+    <artifactId>harjazz</artifactId>
+    <version>1.0</version>      
+  </parent>
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+  <build>
+    <finalName>harjazz-webapp</finalName>
+	<plugins>
+		 <plugin>
+			  <groupId>org.mortbay.jetty</groupId>
+			  <artifactId>maven-jetty-plugin</artifactId>
+			  <version>6.1.26</version>
+			  <configuration>
+			  <connectors>
+				<connector implementation="org.mortbay.jetty.nio.SelectChannelConnector">
+				  <port>9090</port>
+				  <maxIdleTime>60000</maxIdleTime>
+				</connector>
+			  </connectors>
+			  </configuration>
+		 </plugin>
+		 <plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-war-plugin</artifactId>
+			<version>2.0</version>
+			<configuration>
+			  <webResources>
+				<resource>
+				  <!-- this is relative to the pom.xml directory -->
+				  <directory>harjazz-webapp\src\main\resources</directory>
+				  <filtering>true</filtering>
+				</resource>
+				</webResources>				
+			</configuration>
+        </plugin>
+	 </plugins>
+  </build>
+</project>
